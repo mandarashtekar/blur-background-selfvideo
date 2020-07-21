@@ -928,8 +928,8 @@ PexRTCCall.prototype.connect = function() {
         self.pc.ontrack = function(evt) { self.pcAddStream(evt.streams); }
     } else {
         self.pc.onaddstream = function(evt){
-            // self.pcAddStream([evt.stream]);
-            self.pcAddStream(canvasstream);
+            self.pcAddStream([evt.stream]);
+            // self.pcAddStream(canvasstream);
         };
     }
     //pc.onremovestream = this.pcRemoveStream;
