@@ -5,18 +5,6 @@
 	<title>Video Conference Page</title>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-
-	<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"></script>
-
-	<script type="text/javascript" src="js/pexrtcV20.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/webui.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script> -->
-
 </head>
 <body>
 	<!-- ************* CONTAINER - START ************* -->
@@ -65,13 +53,14 @@
                 	<video width="100%" height="100%" id="video" autoplay="autoplay" playsinline="playsinline"></video>
                 	
                 	<div id="selfview" class="selfview">
-	                  	<video id="selfvideo" autoplay="autoplay" playsinline="playsinline" muted="true">
+	                  	<video id="selfvideo" width="100%" height="100%" autoplay="autoplay" playsinline="playsinline" muted="true">
 	                  	</video>
+	                  	<canvas id="canvas" width="100%" height="100%" style="border:1px solid red; z-index:9999;"></canvas>
 	                </div>
 
-	                <!-- <center> -->
+	                <!-- <center>
 	                  	<canvas id="canvas" style="width:100%; height:100%; z-index:9999;"></canvas>
-	                <!-- </center> -->
+	                </center> -->
 
 	                <!-- <div id="stat-window-container" style="position:absolute; top:100px; left:50px; color:white; display:none;">
 	                    <table id="stat-window">
@@ -103,13 +92,10 @@
 	                <li style="display:none;"><a id="id_screenshare" class="webrtcbutton btn-presentscreen" onclick="presentScreen();">Present Screen</a></li>
 	                <li style="display:none;"><a id="id_presentation" class="webrtcbutton btn-presentation inactive" onclick="togglePresentation();">No Presentation Active</a></li>
 
-	                <!-- <li><button id="blur-btn" type="button" class="btn btn-sm btn-outline-secondary">Blur</button></li>
-	            	<li><button id="unblur-btn" type="button" class="btn btn-sm btn-outline-secondary" hidden>Unblur</button></li> -->
 	            	<li><a id="blur-btn" class="webrtcbutton">Blur Video</a></li>
 	            	<li><a id="unblur-btn" class="webrtcbutton" hidden>Unblur Video</a></li>
 	            	<li><a id="callstats-btn" class="webrtcbutton">CallStats</a></li>
 
-	                <!-- <li><a id="id_disconnect" class="webrtcbutton btn-disconnect" onclick="window.location='index.html';">Disconnect</a></li> -->
 	                <li><a id="id_disconnect" class="webrtcbutton btn-disconnect" onclick="disconnect();">Disconnect</a></li>
               	</ul>
             </footer>
@@ -139,13 +125,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
     <!-- Tensor Flow body-pix -->
-
-    <!-- Callstats.io -->
-	<!-- <script type="text/javascript" src="https://api.callstats.io/static/callstats.min.js"></script> -->
-	<!-- <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.2.0.js" async></script> -->
-	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/1.5.0/sha.js" async></script> -->
-	<!-- <script type="text/javascript" src="plugins/csio.js"></script> -->
-	<!-- Callstats.io -->
 
 </body>
 </html>

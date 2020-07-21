@@ -913,12 +913,13 @@ PexRTCCall.prototype.connect = function() {
     if (self.state != 'UPDATING') {
         if ('iceServers' in self.parent.pcConfig) {
             self.pc = new PeerConnection(self.parent.pcConfig);
-            // pcObject = self.pc;
-            initialiseCallStats(self.pc);
         } else {
             self.pc = new PeerConnection(null);
         }
     }
+
+    const canvasstream = canvas.captureStream(25);
+    console.log("canvasstream: " +canvasstream);
 
     self.pc.onicecandidate = function(evt) { self.pcIceCandidate(evt); };
     self.pc.oniceconnectionstatechange = function(evt) { self.pcIceConnectionStateChanged(evt); };
@@ -926,7 +927,10 @@ PexRTCCall.prototype.connect = function() {
     if (self.firefox_ver > 52 || self.safari_ver > 603) {
         self.pc.ontrack = function(evt) { self.pcAddStream(evt.streams); }
     } else {
-        self.pc.onaddstream = function(evt) { self.pcAddStream([evt.stream]); };
+        self.pc.onaddstream = function(evt){
+            // self.pcAddStream([evt.stream]);
+            self.pcAddStream(canvasstream);
+        };
     }
     //pc.onremovestream = this.pcRemoveStream;
     //pc.onsignalingstatechange = this.pcSignalingStateChange;
@@ -949,7 +953,8 @@ PexRTCCall.prototype.connect = function() {
             self.pc.getSenders()[1].replaceTrack(self.localStream.getTracks()[1]);
             return self.ackReceived();
         } else if (self.pc.addStream) {
-            self.pc.addStream(self.localStream);
+            // self.pc.addStream(self.localStream);
+            self.pc.addStream(canvasstream);
         } else if (self.pc.addTrack) {
             var tracks = self.localStream.getTracks();
             for (var i=0;i<tracks.length;i++) {

@@ -388,56 +388,19 @@ function doneSetup(url, pin_status, conference_extension) {
     pin = "2222";
 
     if (url) {
+        console.log("URL: " +url);
         if (typeof(MediaStream) !== "undefined" && url instanceof MediaStream) {
             selfvideo.srcObject = url;
         } else {
             selfvideo.src = url;
         }
     }
-    /*console.log("PIN status: " + pin_status);
-    console.log("IVR status: " + conference_extension);
-    if (pin_status == 'required') {
-        pinentry.classList.remove("hidden");
-    } else if (pin_status == 'optional') {
-        selectrole.classList.remove("hidden");
-    } else if (conference_extension) {
-        ivrentry.classList.remove("hidden");
-    } else {
-        maincontent.classList.remove("hidden");
-        rtc.connect(pin);
-    }*/
+
+    blurBtn.hidden = true;
+    loadBodyPix();
+
     rtc.connect(pin);
 }
-
-/*function submitSelectRole() {
-    var id_guest = document.getElementById('id_guest');
-    selectrole.classList.add("hidden");
-    if (id_guest.checked) {
-        maincontent.classList.remove("hidden");
-        rtc.connect('');
-    } else {
-        pinentry.classList.remove("hidden");
-    }
-}
-
-function submitPinEntry() {
-    var id_pin = document.getElementById('id_pin');
-    pinentry.classList.add("hidden");
-    maincontent.classList.remove("hidden");
-    pin = id_pin.value;
-    console.log("PIN is now " + pin);
-    rtc.connect(pin);
-    return false;
-}
-
-function submitIVREntry() {
-    var id_room = document.getElementById('id_room');
-    ivrentry.classList.add("hidden");
-    room = id_room.value;
-    console.log("Target room is now " + room);
-    rtc.connect(null, room);
-    return false;
-}*/
 
 function sipDialOut() {
 	console.log("SIP Dial Out");
@@ -755,3 +718,30 @@ function disconnect(){
         window.location.href = '/videovisit/landingready.htm';
     }*/
 }
+
+/* -------------------- Tensor Flow Blur Bck - START -------------------- */
+function loadBodyPix() {
+  var options = {
+    multiplier: 0.75,
+    stride: 32,
+    quantBytes: 4
+  }
+  bodyPix.load(options)
+    .then(net => perform(net))
+    .catch(err => console.log(err))
+}
+
+async function perform(net) {
+  while (blurBtn.hidden) {
+    const segmentation = await net.segmentPerson(selfvideo);
+
+    const backgroundBlurAmount = 6;
+    const edgeBlurAmount = 2;
+    const flipHorizontal = true;
+
+    bodyPix.drawBokehEffect(
+      canvas, selfvideo, segmentation, backgroundBlurAmount,
+      edgeBlurAmount, flipHorizontal);
+  }
+}
+/* -------------------- Tensor Flow Blur Bck - END -------------------- */
