@@ -260,7 +260,7 @@ body {
   width: 80%;
   padding: 0 2%;
 }
-.videocontainer video {
+.videocontainer video, .videocontainer canvas {
   position: relative;
   top: 0;
   right: 0;
