@@ -198,7 +198,7 @@ unblurBtn.addEventListener('click', e => {
 	canvas.hidden = true;
 });
 
-function loadBodyPix() {
+/*function loadBodyPix() {
   console.log("main - loadBodyPix");
 	var options = {
 	  multiplier: 0.75,
@@ -222,7 +222,7 @@ async function perform(net) {
 	    canvas, videoElement, segmentation, backgroundBlurAmount,
 	    edgeBlurAmount, flipHorizontal);
 	}
-}
+}*/
 
 /* -------------------- CallStats - START -------------------- */
 // callStats.addEventListener('click', e => {
