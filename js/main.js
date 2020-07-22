@@ -160,8 +160,8 @@ start();
 videoElement.onplaying = () => {
 	console.log("videoElement playing");
 
-	/*canvas.height = selfvideo.videoHeight;
-	canvas.width = selfvideo.videoWidth;*/
+  /*canvas.height = selfvideo.videoHeight;
+  canvas.width = selfvideo.videoWidth;*/
 };
 
 /*  function startVideoStream() {
