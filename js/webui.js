@@ -721,6 +721,7 @@ function disconnect(){
 
 /* -------------------- Tensor Flow Blur Bck - START -------------------- */
 function loadBodyPix() {
+  console.log("webui - loadBodyPix");
   var options = {
     multiplier: 0.75,
     stride: 32,

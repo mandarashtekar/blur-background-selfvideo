@@ -199,6 +199,7 @@ unblurBtn.addEventListener('click', e => {
 });
 
 function loadBodyPix() {
+  console.log("main - loadBodyPix");
 	var options = {
 	  multiplier: 0.75,
 	  stride: 32,
