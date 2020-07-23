@@ -118,7 +118,7 @@ function changeAudioDestination() {
 
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
-  videoElement.srcObject = stream;
+  // videoElement.srcObject = stream;
   // selfvideo.srcObject = stream;
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
