@@ -723,9 +723,9 @@ function disconnect(){
 function loadBodyPix() {
   console.log("webui - loadBodyPix");
   var options = {
-    multiplier: 0.75,
-    stride: 16,
-    quantBytes: 1
+    multiplier: 1.0,
+    stride: 8,
+    quantBytes: 4
   }
   bodyPix.load(options)
     .then(net => perform(net))
@@ -737,7 +737,7 @@ async function perform(net) {
     const segmentation = await net.segmentPerson(selfvideo);
 
     const backgroundBlurAmount = 3;
-    const edgeBlurAmount = 2;
+    const edgeBlurAmount = 3;
     const flipHorizontal = true;
 
     bodyPix.drawBokehEffect(
