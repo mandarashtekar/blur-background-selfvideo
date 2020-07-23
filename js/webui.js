@@ -396,8 +396,8 @@ function doneSetup(url, pin_status, conference_extension) {
         }
     }
 
-    blurBtn.hidden = true;
-    loadBodyPix();
+    // blurBtn.hidden = true;
+    // loadBodyPix();
 
     rtc.connect(pin);
 }
@@ -457,14 +457,14 @@ function participantCreated(participant){
         for (var i = 0; i < patientFirstName.length; i++) {
             for (var j = 0; j < participantName.length; j++) {
                 if (patientFirstName[i] === participantName[j]) {
-                    console.log("It's a match!!! :)");
+                    // console.log("It's a match!!! :)");
 
                     var uuid = participant.uuid;
-                    console.log("Participant uuid: " +participant.uuid);
+                    // console.log("Participant uuid: " +participant.uuid);
 
                     rtc.setParticipantSpotlight(uuid, true);
                 } else{
-                    console.log("It's not a match!!! :(");         
+                    // console.log("It's not a match!!! :(");         
                 }
             }
         }
@@ -482,14 +482,14 @@ function participantCreated(participant){
         for (var i = 0; i < providerFirstName.length; i++) {
             for (var j = 0; j < participantName.length; j++) {
                 if (providerFirstName[i] === participantName[j]) {
-                    console.log("It's a match!!! :)");
+                    // console.log("It's a match!!! :)");
 
                     var uuid = participant.uuid;
-                    console.log("Participant uuid: " +participant.uuid);
+                    // console.log("Participant uuid: " +participant.uuid);
 
                     rtc.setParticipantSpotlight(uuid, true);
                 } else{
-                    console.log("It's not a match!!! :(");         
+                    // console.log("It's not a match!!! :(");         
                 }
             }
         }
@@ -718,9 +718,36 @@ function disconnect(){
         window.location.href = '/videovisit/landingready.htm';
     }*/
 }
-
 /* -------------------- Tensor Flow Blur Bck - START -------------------- */
 function loadBodyPix() {
+  console.log("webui - loadBodyPix");
+  var options = {
+    multiplier: 0.75,
+    stride: 32,
+    quantBytes: 4
+  }
+  bodyPix.load(options)
+    .then(net => perform(net))
+    .catch(err => console.log(err))
+}
+
+async function perform(net) {
+  while (blurBtn.hidden) {
+    const segmentation = await net.segmentPerson(selfvideo);
+
+    const backgroundBlurAmount = 6;
+    const edgeBlurAmount = 2;
+    const flipHorizontal = true;
+
+    bodyPix.drawBokehEffect(
+      canvas, selfvideo, segmentation, backgroundBlurAmount,
+      edgeBlurAmount, flipHorizontal);
+  }
+}
+/* -------------------- Tensor Flow Blur Bck - END -------------------- */
+
+/* -------------------- Tensor Flow Blur Bck - START -------------------- */
+/*function loadBodyPix() {
   console.log("webui - loadBodyPix");
   var options = {
     architecture: 'MobileNetV1',
@@ -745,5 +772,5 @@ async function perform(net) {
       canvas, selfvideo, segmentation, backgroundBlurAmount,
       edgeBlurAmount, flipHorizontal);
   }
-}
+}*/
 /* -------------------- Tensor Flow Blur Bck - END -------------------- */
