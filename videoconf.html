@@ -51,11 +51,11 @@
               	<!-- ************* VIDEO CONTAINER - START ************* -->
               	<div id="videocontainer" class="videocontainer">
                 	<video width="100%" height="100%" id="video" autoplay="autoplay" playsinline="playsinline"></video>
-                	
+                	<canvas id="canvas" width="200" height="100" style="border:1px solid red; position:absolute; top:0; left:0; width:200px; height:auto"></canvas>
                 	<div id="selfview" class="selfview">
-	                  	<video id="selfvideo" width="100%" height="100%" autoplay="autoplay" playsinline="playsinline" muted="true">
+	                  	<video id="selfvideo" width="480" height="320" autoplay="autoplay" playsinline="playsinline" muted="true">
 	                  	</video>
-	                  	<canvas id="canvas" width="480" height="320" style="border:1px solid red; z-index:9999;"></canvas>
+	                  	<!-- <canvas id="canvas" width="480" height="320" style="border:1px solid red; z-index:9999;"></canvas> -->
 	                </div>
 
 	                <!-- <center>
@@ -99,6 +99,10 @@
 	                <li><a id="id_disconnect" class="webrtcbutton btn-disconnect" onclick="disconnect();">Disconnect</a></li>
               	</ul>
             </footer>
+            <!-- <div style="position:relative;background-color:blue">
+		        <canvas id="canvas" width="480" height="320" style="border:1px solid red; z-index:9999;position:absolute;top:0;left:0;width:480px;height:320px"></canvas>
+		    </div> -->
+
             <!-- ************* FOOTER - END ************* -->
         </div>
 	</div>

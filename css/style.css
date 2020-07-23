@@ -254,11 +254,13 @@ body {
 -------------------------------------------------- */
 .videocontainer {
   background: #333;
-  position: absolute;
+  /*position: absolute;
   left: 20%;
+  padding: 0 2%;*/
   height: 100%;
   width: 80%;
-  padding: 0 2%;
+  position: relative;
+  float: left;
 }
 .videocontainer video, .videocontainer canvas {
   position: relative;
