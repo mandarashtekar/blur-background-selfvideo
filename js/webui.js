@@ -737,7 +737,7 @@ async function perform(net) {
     const segmentation = await net.segmentPerson(selfvideo);
 
     const backgroundBlurAmount = 3;
-    const edgeBlurAmount = 3;
+    const edgeBlurAmount = 2;
     const flipHorizontal = true;
 
     bodyPix.drawBokehEffect(
