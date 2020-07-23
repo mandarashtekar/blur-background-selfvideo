@@ -17,15 +17,16 @@ window.onload = () => {
 });*/
 
 $('input:radio[name="role"]').change(function() {
-        console.log("Radio selected");
-        if ($(this).val() == '2') {
-            console.log("Host Role selected");
-            pinentry.classList.remove("hidden");
-        } else {
-            console.log("Guest Role selected");
-            pinentry.classList.add("hidden");
-        }
-    });
+    console.log("Role selected");
+    if ($(this).val() == '2') {
+        console.log("Host Role selected");
+        pinentry.classList.remove("hidden");
+        $("#id_pin").focus();
+    } else {
+        console.log("Guest Role selected");
+        pinentry.classList.add("hidden");
+    }
+});
 
 $("#join-conf").on("click", function(){
     console.log("join-conf clicked");
