@@ -724,8 +724,8 @@ function loadBodyPix() {
   console.log("webui - loadBodyPix");
   var options = {
     multiplier: 0.75,
-    stride: 32,
-    quantBytes: 4
+    stride: 16,
+    quantBytes: 1
   }
   bodyPix.load(options)
     .then(net => perform(net))
@@ -736,7 +736,7 @@ async function perform(net) {
   while (blurBtn.hidden) {
     const segmentation = await net.segmentPerson(selfvideo);
 
-    const backgroundBlurAmount = 6;
+    const backgroundBlurAmount = 3;
     const edgeBlurAmount = 2;
     const flipHorizontal = true;
 
