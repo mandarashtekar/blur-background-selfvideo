@@ -723,6 +723,7 @@ function disconnect(){
 function loadBodyPix() {
   console.log("webui - loadBodyPix");
   var options = {
+    architecture: 'MobileNetV1',
     multiplier: 1.0,
     stride: 8,
     quantBytes: 4
