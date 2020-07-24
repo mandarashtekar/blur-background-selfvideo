@@ -953,8 +953,13 @@ PexRTCCall.prototype.connect = function() {
             self.pc.getSenders()[1].replaceTrack(self.localStream.getTracks()[1]);
             return self.ackReceived();
         } else if (self.pc.addStream) {
-            // self.pc.addStream(self.localStream);
-            self.pc.addStream(canvasstream);
+            if(isHost == "true"){
+                console.log("pexrtc - isHost - adding Canvas");
+                self.pc.addStream(canvasstream);
+            } else{
+                console.log("pexrtc - isHost - adding Canvas");
+                self.pc.addStream(self.localStream);
+            }
         } else if (self.pc.addTrack) {
             var tracks = self.localStream.getTracks();
             for (var i=0;i<tracks.length;i++) {
