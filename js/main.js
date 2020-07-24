@@ -1,5 +1,7 @@
 'use strict';
 
+var isHost;
+
 window.onload = function () {
 	console.log("window.onload");
 	// alert($('#id_alias').val());
@@ -15,12 +17,14 @@ window.onload = function () {
     var bandwidth = data.bandwidth;
     var source = data.source;
     var pin = data.pin;
+    isHost = data.isHost;
 
     console.log("Alias:" +alias);
     console.log("Name:" +name);
     console.log("Bandwidth:" +bandwidth);
     console.log("Source:" +source);
     console.log("Pin:" +pin);
+    console.log("isHost:" +isHost);
 
     initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
     // initialise("ttgpexip.ttgtpmg.net", alias, bandwidth, name, "", source);
