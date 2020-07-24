@@ -397,10 +397,10 @@ function doneSetup(url, pin_status, conference_extension) {
     }
 
     // blurBtn.hidden = true;
-    if(isHost == true){
+    /*if(isHost == true){
         console.log("doneSetup - isHost - calling loadBodyPix");
         loadBodyPix();
-    }
+    }*/
     rtc.connect(pin);
 }
 
