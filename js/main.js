@@ -123,7 +123,7 @@ function changeAudioDestination() {
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
   // videoElement.srcObject = stream;
-  // selfvideo.srcObject = stream;
+  selfvideo.srcObject = stream;
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
@@ -202,7 +202,7 @@ unblurBtn.addEventListener('click', e => {
 	canvas.hidden = true;
 });
 
-/*function loadBodyPix() {
+function loadBodyPix() {
   console.log("main - loadBodyPix");
 	var options = {
 	  multiplier: 0.75,
@@ -223,10 +223,10 @@ async function perform(net) {
 	  const flipHorizontal = true;
 
 	  bodyPix.drawBokehEffect(
-	    canvas, videoElement, segmentation, backgroundBlurAmount,
+	    canvas, selfvideo, segmentation, backgroundBlurAmount,
 	    edgeBlurAmount, flipHorizontal);
 	}
-}*/
+}
 
 /* -------------------- CallStats - START -------------------- */
 // callStats.addEventListener('click', e => {
@@ -257,9 +257,9 @@ function initialiseCallStats(pcObject){
     console.log("Monitoring status: "+ err + " msg: " + msg);
   };
 
-  /*function createOfferError(err) {
+  function createOfferError(err) {
     callstats.reportError(pcObject, conferenceID, callstats.webRTCFunctions.createOffer, err);
-  }*/
+  }
 
   // pcObject is created, tell callstats about it
   // pick a fabricUsage enumeration, if pc is sending both media and data: use multiplex.

@@ -721,7 +721,7 @@ function disconnect(){
     }*/
 }
 /* -------------------- Tensor Flow Blur Bck - START -------------------- */
-function loadBodyPix() {
+/*function loadBodyPix() {
   console.log("webui - loadBodyPix");
   var options = {
     multiplier: 0.75,
@@ -745,7 +745,7 @@ async function perform(net) {
       canvas, selfvideo, segmentation, backgroundBlurAmount,
       edgeBlurAmount, flipHorizontal);
   }
-}
+}*/
 /* -------------------- Tensor Flow Blur Bck - END -------------------- */
 
 /* -------------------- Tensor Flow Blur Bck - START -------------------- */
