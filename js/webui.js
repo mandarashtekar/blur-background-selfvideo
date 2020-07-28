@@ -747,32 +747,3 @@ async function perform(net) {
   }
 }*/
 /* -------------------- Tensor Flow Blur Bck - END -------------------- */
-
-/* -------------------- Tensor Flow Blur Bck - START -------------------- */
-/*function loadBodyPix() {
-  console.log("webui - loadBodyPix");
-  var options = {
-    architecture: 'MobileNetV1',
-    multiplier: 1.0,
-    stride: 8,
-    quantBytes: 4
-  }
-  bodyPix.load(options)
-    .then(net => perform(net))
-    .catch(err => console.log(err))
-}
-
-async function perform(net) {
-  while (blurBtn.hidden) {
-    const segmentation = await net.segmentPerson(selfvideo);
-
-    const backgroundBlurAmount = 3;
-    const edgeBlurAmount = 2;
-    const flipHorizontal = true;
-
-    bodyPix.drawBokehEffect(
-      canvas, selfvideo, segmentation, backgroundBlurAmount,
-      edgeBlurAmount, flipHorizontal);
-  }
-}*/
-/* -------------------- Tensor Flow Blur Bck - END -------------------- */
