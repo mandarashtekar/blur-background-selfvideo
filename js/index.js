@@ -22,12 +22,12 @@ $('input:radio[name="role"]').change(function() {
     console.log("Role selected");
     if ($(this).val() == '2') {
         console.log("Host Role selected");
-        pinentry.classList.remove("hidden");
+        // pinentry.classList.remove("hidden");
         isHost = true;
         $("#id_pin").focus();
     } else {
         console.log("Guest Role selected");
-        pinentry.classList.add("hidden");
+        // pinentry.classList.add("hidden");
     }
 });
 
