@@ -25,8 +25,9 @@ window.onload = function () {
     console.log("Source:" +source);
     console.log("Pin:" +pin);
     console.log("isHost:" +isHost);
-
-    initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
+  
+    initialise("pex3-srm.kp.org", alias, bandwidth, name, "", source);
+    // initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
     // initialise("ttgpexip.ttgtpmg.net", alias, bandwidth, name, "", source);
     // rtc.connect(pin);
 }
