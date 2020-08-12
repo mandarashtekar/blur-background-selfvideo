@@ -205,15 +205,10 @@ unblurBtn.addEventListener('click', e => {
 
 function loadBodyPix() {
   console.log("main - loadBodyPix");
-  /*var options = {
-    architecture: 'MobileNetV1',
-    multiplier: 1.0,
-    stride: 8,
-    quantBytes: 4
-  }*/
+
 	var options = {
 	  multiplier: 0.75,
-	  stride: 32,
+	  stride: 16,
 	  quantBytes: 4
 	}
 	bodyPix.load(options)
