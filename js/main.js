@@ -57,6 +57,7 @@ const audioOutputSelect = document.querySelector('select#speakerSource');
 const videoSelect = document.querySelector('select#videoSource');
 const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
 
+const togglePipButton = document.getElementById('togglePipButton');
 var deviceInfos;
 
 audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
@@ -168,6 +169,52 @@ selfvideo.onplaying = () => {
   canvas.height = selfvideo.videoHeight;
   canvas.width = selfvideo.videoWidth;
 };
+
+/* -------------------- Picture in Picture (PIP) - START -------------------- */
+togglePipButton.addEventListener('click', async function (event) {
+    togglePipButton.disabled = true; //disable toggle button while the event occurs
+    try {
+        // If there is no element in Picture-in-Picture yet, request for it
+        if (videoElement !== document.pictureInPictureElement) {
+            await videoElement.requestPictureInPicture();
+        }
+        // If Picture-in-Picture already exists, exit the mode
+        else {
+            await document.exitPictureInPicture();
+        }
+
+    } catch (error) {
+        console.log(`Oh Horror! ${error}`);
+    } finally {
+        togglePipButton.disabled = false; //enable toggle button after the event
+    }
+});
+
+videoElement.addEventListener('enterpictureinpicture', function (event) {
+    console.log('Entered PiP');
+    pipWindow = event.pictureInPictureWindow;
+    console.log(`Window size -  \n Width: ${pipWindow.width} \n Height: ${pipWindow.height}`);
+});
+
+videoElement.addEventListener('leavepictureinpicture', function (event) {
+    console.log('Left PiP');
+    togglePipButton.disabled = false;
+});
+
+
+if ('pictureInPictureEnabled' in document) {
+    showPipButton();
+    videoElement.addEventListener('loadedmetadata', showPipButton);
+    videoElement.addEventListener('emptied', showPipButton);
+} else {
+    togglePipButton.hidden = true;
+}
+
+function showPipButton() {
+    togglePipButton.disabled = (videoElement.readyState === 0) || !document.pictureInPictureEnabled ||videoElement.disablePictureInPicture;
+}
+/* -------------------- Picture in Picture (PIP) - END -------------------- */
+
 
 /*  function startVideoStream() {
 navigator.mediaDevices.getUserMedia({video: true, audio: false})
